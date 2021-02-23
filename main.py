@@ -2,14 +2,28 @@
 
 
 class DataIput():
+    def __init__(self, amount_chicken,sell_price,buy_price,remedy,cleaning,price_before_initial,
+    price_initial, price_growth, price_fattening, price_fuel, mortality, energy, water, 
+    slaughter,autonomy):
+        self.amount_chicken = amount_chicken
+        self.sell_price = sell_price
+        self.buy_price = buy_price
+        self.remedy = remedy
+        self.cleaning = cleaning
+        self.price_before_initial = price_before_initial
+        self.price_initial = price_initial
+        self.price_growth = price_growth
+        self.price_fattening = price_fattening
+        self.price_fuel = price_fuel
+        self.mortality = mortality
+        self.energy = energy
+        self.water = water
+        self.slaughter = slaughter
+        self.autonomy = autonomy
+        
 
-    def chicken_amount(self,amount):
-        self.chicken = amount
-        return self.chicken
+DataIput = DataIput(50,35,3.5,40,50,2.2,2.2,2.1,2.1,4.89,0.5,0,30,90,40)
 
 
-DataIput = DataIput()
-
-DataIput.chicken_amount(50)
-
-print(type(DataIput.chicken_amount(50)))
+ 
+ 
