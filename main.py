@@ -1,7 +1,7 @@
 
 
 
-class DataIput():
+class DataInput():
     def __init__(self, amount_chicken,sell_price,buy_price,remedy,cleaning,price_before_initial,
     price_initial, price_growth, price_fattening, price_fuel, mortality, energy, water, 
     slaughter,autonomy):
@@ -22,7 +22,13 @@ class DataIput():
         self.autonomy = autonomy
         
 
-DataIput = DataIput(50,35,3.5,40,50,2.2,2.2,2.1,2.1,4.89,0.5,0,30,90,40)
+#DataInput = DataInput(50,35,3.5,40,50,2.2,2.2,2.1,2.1,4.89,0.5,0,30,90,40)
+
+class Status(DataInput):
+    def __init__(self):
+        super().__init__(50,35,3.5,40,50,2.2,2.2,2.1,2.1,4.89,0.5,0,30,90,40)
+        print(self.autonomy)
+        
 
 
  
