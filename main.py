@@ -33,6 +33,11 @@ class Status(DataInput):
         #the method super doing class father to be activate 
         super().__init__(50,35,3.5,40,50,2.2,2.2,2.1,2.1,4.89,0.5,0,30,90,40)
         self.kg_before_initial(self.kg_all_days)
+        print(self.kg_before_initial(self.kg_all_days))
+        print(self.kg_initial(self.kg_all_days))
+        print(self.kg_growth(self.kg_all_days))
+        print(self.kg_fattening(self.kg_all_days))
+        
 
     def convert_gram_to_kilo(self,gram):
         return (gram /1000) * 2 
@@ -45,15 +50,28 @@ class Status(DataInput):
         before_initial = kg_all_days[0:15]
         sum_before_initial = 0
         for day in before_initial:
-            sum_initial += day
+            sum_before_initial += day
         return self.convert_gram_to_kilo(sum_before_initial * self.amount_chicken)
 
     def kg_initial(self, kg_all_days):
-        initial = kg_all_days[16:30]
+        initial = kg_all_days[15:30]
         sum_initial = 0
         for day in initial:
             sum_initial += day
         return self.convert_gram_to_kilo(sum_initial * self.amount_chicken)
 
+    def kg_growth(self, kg_all_days):
+        growth = kg_all_days[30:70]
+        sum_growth = 0
+        for day in growth:
+            sum_growth += day
+        return self.convert_gram_to_kilo(sum_growth * self.amount_chicken)
+
+    def kg_fattening(self, kg_all_days):
+        fattening = kg_all_days[70:90]
+        sum_fattening = 0
+        for day in fattening:
+            sum_fattening += day
+        return self.convert_gram_to_kilo(sum_fattening * self.amount_chicken)
 
 Status = Status()
