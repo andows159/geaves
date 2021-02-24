@@ -31,14 +31,14 @@ class DataInput():
 class Status(DataInput):
     def __init__(self):
         #the method super doing class father to be activate 
-        super().__init__(50,35,3.5,40,50,2.2,2.2,2.1,2.1,4.89,0.5,0,30,90,40)
+        super().__init__(50,35,3.5,40,50,2.2,2.2,2.1,2.1,4.89,5,0,30,90,40)
         self.kg_before_initial(self.kg_all_days)
-        print(self.kg_before_initial(self.kg_all_days))
-        print(self.kg_initial(self.kg_all_days))
-        print(self.kg_growth(self.kg_all_days))
-        print(self.kg_fattening(self.kg_all_days))
-        
-
+        self.price_before_initial = self.price_before_initial * self.kg_before_initial(self.kg_all_days)
+        self.price_initial = self.price_initial * self.kg_initial(self.kg_all_days)
+        self.price_growth = self.price_growth * self.kg_growth(self.kg_all_days)
+        self.price_fattening = self.price_fattening * self.kg_fattening(self.kg_all_days)
+        print(self.price_baby_chicken())
+        print(self.value_brute())
     def convert_gram_to_kilo(self,gram):
         return (gram /1000) * 2 
         #in addition to converting the unit, 
@@ -73,5 +73,14 @@ class Status(DataInput):
         for day in fattening:
             sum_fattening += day
         return self.convert_gram_to_kilo(sum_fattening * self.amount_chicken)
+
+    def price_baby_chicken(self):
+        return self.amount_chicken * self.buy_price
+    
+    def value_brute(self):
+        total = self.sell_price * self.amount_chicken
+        percent = (self.mortality / 100) * total
+        return total - percent
+
 
 Status = Status()
