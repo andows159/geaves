@@ -1,6 +1,3 @@
-
-
-
 class DataInput():
     def __init__(self, amount_chicken,sell_price,buy_price,remedy,cleaning,price_kg_before_initial,
     price_kg_initial, price_kg_growth, price_kg_fattening, price_fuel, mortality, energy, water, 
@@ -24,9 +21,6 @@ class DataInput():
         self.water = water
         self.slaughter = slaughter
         self.autonomy = autonomy
-        
-
-#DataInput = DataInput(50,35,3.5,40,50,2.2,2.2,2.1,2.1,4.89,0.5,0,30,90,40)
 
 class Status(DataInput):
     def __init__(self):
@@ -36,7 +30,7 @@ class Status(DataInput):
         print(self.value_brute())
         print(self.amount_food_kg())
         print(self.amount_food_price())
-
+        print(self.amount_investiment())
     def convert_gram_to_kilo(self,gram):
         return (gram /1000) * 2 
         #in addition to converting the unit, 
@@ -102,4 +96,7 @@ class Status(DataInput):
     def amount_food_price(self):
         return self.price_before_initial() + self.price_initial() + self.price_growth() + self.price_fattening()
 
+    def amount_investiment(self):
+        amount = self.amount_food_price() + self.price_fuel + self.energy + self.water + self.cleaning + self.remedy + self.slaughter
+        return amount
 Status = Status()
