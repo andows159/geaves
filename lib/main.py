@@ -1,3 +1,5 @@
+from PyQt5 import uic, QtWidgets
+
 class DataInput():
     def __init__(self, amount_chicken,sell_price,buy_price,remedy,cleaning,price_kg_before_initial,
     price_kg_initial, price_kg_growth, price_kg_fattening, price_fuel, mortality, energy, water, 
@@ -21,6 +23,7 @@ class DataInput():
         self.water = water
         self.slaughter = slaughter
         self.autonomy = autonomy
+        #lembrar de chamar a janela de status apartir dessa classe 
 
 class Status(DataInput):
     def __init__(self):
@@ -99,4 +102,41 @@ class Status(DataInput):
     def amount_investiment(self):
         amount = self.amount_food_price() + self.price_fuel + self.energy + self.water + self.cleaning + self.remedy + self.slaughter
         return amount
-Status = Status()
+
+class Screens(Status):
+    def print_input(self):
+        return print(self.screen_amount_chicken)
+
+    def InputScreen(self):
+        self.input_screen = uic.loadUi("./screens/input.ui")
+        self.input_screen.show()
+        self.screen_amount_chicken = self.input_screen.amount_chicken.text()
+        self.screen_sell_price = self.input_screen.sell_price.text()
+        self.screen_buy_price = self.input_screen.buy_price.text()
+        self.screen_remedy = self.input_screen.remedy.text()
+        self.screen_cleaning = self.input_screen.cleaning.text()
+        self.screen_price_kg_before_initial = self.input_screen.price_kg_before_initial.text()
+        self.screen_price_kg_initial = self.input_screen.price_kg_initial.text()
+        self.screen_price_kg_growth =self.input_screen.price_kg_growth.text()
+        self.screen_price_kg_fattening = self.input_screen.price_kg_fattening.text()
+        self.screen_price_fuel = self.input_screen.price_fuel.text()
+        self.screen_mortality = self.input_screen.mortality.text()
+        self.screen_energy = self.input_screen.energy.text()
+        self.screen_water = self.input_screen.water.text()
+        self.screen_slaughter = self.input_screen.slaughter.text()
+        self.screen_autonomy = self.input_screen.autonomy.text()
+        
+        
+
+        self.input_screen.print_input.clicked.connect(self.print_input)
+
+class Main(Screens):
+    def __init__(self):
+        app = QtWidgets.QApplication([])
+        self.InputScreen()
+        app.exec()        
+
+
+
+
+inst = Main()
